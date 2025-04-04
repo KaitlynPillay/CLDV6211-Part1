@@ -1,10 +1,6 @@
-name: Build and Deploy EventEase
+name: Build and Deploy
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
   build:
@@ -13,23 +9,21 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Setup .NET 6
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '6.0.x'
-    
-    - name: Restore dependencies
-      run: dotnet restore ./wwwroot/EventEase.csproj
-      working-directory: ./
-    
+    - name: Verify structure
+      run: |
+        ls -R
+        echo "Project file path:"
+        ls EventEase/EventEase/*.csproj
+
+    - name: Restore
+      run: dotnet restore EventEase/EventEase/EventEase.csproj
+      
     - name: Build
-      run: dotnet build ./wwwroot/EventEase.csproj --configuration Release --no-restore
-      working-directory: ./
-    
+      run: dotnet build EventEase/EventEase/EventEase.csproj --configuration Release
+      
     - name: Publish
-      run: dotnet publish ./wwwroot/EventEase.csproj -c Release -o ./publish_output
-      working-directory: ./
-    
+      run: dotnet publish EventEase/EventEase/EventEase.csproj -c Release -o ./publish_output
+      
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
