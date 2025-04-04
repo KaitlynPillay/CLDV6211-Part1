@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "EventEase - Venue Booking System";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to EventEase</h1>
+    <p class="lead">Your comprehensive venue booking management system</p>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Venues</h5>
+                    <p class="card-text">Manage all venue information and availability.</p>
+                    <a asp-controller="Venues" asp-action="Index" class="btn btn-primary">View Venues</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Events</h5>
+                    <p class="card-text">Create and manage upcoming events.</p>
+                    <a asp-controller="Events" asp-action="Index" class="btn btn-primary">View Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Bookings</h5>
+                    <p class="card-text">View and manage all venue bookings.</p>
+                    <a asp-controller="Bookings" asp-action="Index" class="btn btn-primary">View Bookings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
